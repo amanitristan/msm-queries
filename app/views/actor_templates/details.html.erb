@@ -40,11 +40,11 @@
     <th></th>
   </tr>
 
-<% matching_characters.each do |a_character| %> ######### HAVING ISSUES WITH THE BELOW RUBY CODE
+<% matching_characters.each do |a_character| %>
   <tr>
     <td>
       <% a_character.movie_id %>
-      <% matching_movies = Movie.where({ id: a_character.movie_id %>
+      <% matching_movies = Movie.where({ id: a_character.movie_id })%>
       <% the_movie = matching_movies.at(0) %>
       <%= the_movie.title %>
     </td>

@@ -40,18 +40,29 @@
     <th></th>
   </tr>
 
-<% matching_characters.each do |a_character| %>
-  <tr>
-    <td>
-      <% a_character.movie_id %>
-      <% matching_movies = Movie.where({ id: a_character.movie_id })%>
-      <% the_movie = matching_movies.at(0) %>
-      <%= the_movie.title %>
-    </td>
-    <td>Year</td>
-    <td>Director</td>
-    <td><%= a_character.name %></td>
-    <td></td>
-  </tr>
-<% end %>
+  <% matching_characters.each do |a_character| %>
+    <tr>
+      <td>
+        <% a_character.movie_id %>
+        <% matching_movies = Movie.where({ id: a_character.movie_id })%>
+        <% the_movie = matching_movies.at(0) %>
+        <%= the_movie.title %>
+      </td>
+      <td><%= the_movie.year %></td>
+      <td>
+        <% the_movie.director_id %>
+        <% matching_directors = Director.where({ id: the_movie.director_id })%>
+        <% the_director = matching_directors.at(0) %>
+        <%= the_director.name %>
+      </td>
+      <td><%= a_character.name %></td>
+      <td>
+        <a href="/movies/<%= the_movie.id %>">Show details</a>
+      </td>
+    </tr>
+  <% end %>
 </table>
+
+
+      
+      
